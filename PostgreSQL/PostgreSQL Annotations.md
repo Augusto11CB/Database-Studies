@@ -6,6 +6,18 @@ ALTER TABLE my_table
 ADD COLUMN new_field varchar(20);
 ```
 
+## Updating Column Name
+ 
+```SQL
+ALTER  TABLE  table_name
+RENAME  COLUMN  column_name  TO  new_column_name;
+```
+
+###  How to Remove a Not Null Constraint 
+```sql
+alter table users alter column email drop not null;
+```
+
 ## Copying Data From Column to Another**
 ```SQL
 UPDATE my_table --format schema.my_table
@@ -56,3 +68,11 @@ ALTER SEQUENCE foo_a_seq OWNED BY foo.a;    -- 8.2 or later
 -   **currval(' sequence_name ')**  - this command will return the last returned value from the "nextval" command. If the nextval still hasn't been used, no value will be returned
     
 -   **setval(' sequence_name ', n)**  - the "setval" command will set the current value of the sequence to n.
+
+## Enum
+### Add new value in an existing Enum
+```
+ALTER TYPE my_enum ADD VALUE 'newest value of the enum';
+
+SELECT enum_range(NULL::<schema>.my_enum ); --Select enum values
+```
